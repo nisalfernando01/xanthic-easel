@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xanthic Easel | Product</title>
+    <!-- Google Fonts: Arizonia & Open Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Arizonia&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.0.31/default/snipcart.css" />
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo"><a href="index.html">Xanthic easel</a></div>
+        <nav>
+            <ul>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="prints.html">Prints</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="#/cart" class="snipcart-checkout">Cart</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Product Details Section -->
+    <section id="product-details" class="product-container">
+        <div class="product-image">
+            <img id="main-image" src="" alt="Print Preview">
+        </div>
+        <div class="product-info">
+            <h1 id="product-title">Loading...</h1>
+            <p id="product-price">€0.00</p>
+
+            <div class="product-options">
+                <label for="frame-select">Frame:</label>
+                <select id="frame-select">
+                    <option value="None">None</option>
+                    <option value="White">White Frame</option>
+                    <option value="Black">Black Frame</option>
+                </select>
+
+                <label for="size-select">Size:</label>
+                <select id="size-select">
+                    <option value="20x30">20 x 30 cm</option>
+                    <option value="30x40">30 x 40 cm</option>
+                </select>
+
+                <label for="quantity-input">Quantity:</label>
+                <input type="number" id="quantity-input" value="1" min="1" max="10">
+            </div>
+
+            <button id="add-to-cart-btn" class="btn-primary snipcart-add-item" data-item-id="" data-item-price=""
+                data-item-url="" data-item-description="" data-item-image="" data-item-name=""
+                data-item-custom1-name="Size" data-item-custom1-options="20x30|30x40" data-item-custom1-value="20x30"
+                data-item-custom2-name="Frame" data-item-custom2-options="None|White|Black"
+                data-item-custom2-value="None">
+                Add To Cart
+            </button>
+            <p id="feedback-msg"></p>
+        </div>
+    </section>
+
+    <!-- Minimal Footer -->
+    <footer>
+        <p>&copy; 2026 Xanthic Easel</p>
+    </footer>
+
+    <div hidden id="snipcart" data-api-key="ZjlhMjMwOTktODg1Yy00ZTJjLTljMTctNTIyNTJiZDJlZTdkNjM5MDcwMDEwMDg3MzM3MDkw"
+        data-config-currency="lkr"></div>
+    <script async src="https://cdn.snipcart.com/themes/v3.0.31/default/snipcart.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

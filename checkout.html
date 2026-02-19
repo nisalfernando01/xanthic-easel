@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xanthic Easel | Checkout</title>
+    <!-- Google Fonts: Arizonia & Open Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Arizonia&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .checkout-container {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .checkout-form {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .step-container {
+            border: 1px solid #eee;
+            padding: 2rem;
+            background: #fff;
+        }
+
+        .step-header {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #444;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 1px solid #f0f0f0;
+            padding-bottom: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.8rem;
+            margin-bottom: 0.5rem;
+            color: #666;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            font-family: var(--body-font);
+        }
+
+        .order-summary {
+            background-color: #fff;
+            padding: 2rem;
+            border: 1px solid #eee;
+            height: fit-content;
+        }
+
+        .summary-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid #f9f9f9;
+            padding-bottom: 1rem;
+        }
+
+        .summary-thumb {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+        }
+
+        .summary-details h4 {
+            font-size: 0.9rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .summary-details p {
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        .summary-total {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 2px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 800px) {
+            .checkout-container {
+                grid-template-columns: 1fr;
+            }
+
+            .order-summary {
+                order: -1;
+            }
+
+            /* Show summary first on mobile */
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo"><a href="index.html">Xanthic easel</a></div>
+    </header>
+
+    <section class="checkout-container">
+        <!-- checkout Form -->
+        <div class="checkout-form">
+
+            <!-- Step 1: Email -->
+            <div id="step-email" class="step-container">
+                <div class="step-header">1. Your Email</div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" id="email" placeholder="you@example.com">
+                </div>
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" checked style="width:auto;"> Sign up to receive news and updates
+                    </label>
+                </div>
+                <button class="btn-primary" onclick="nextStep('delivery')">Continue to Delivery</button>
+            </div>
+
+            <!-- Step 2: Delivery -->
+            <div id="step-delivery" class="step-container hidden">
+                <div class="step-header">2. Delivery Details</div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" id="phone" placeholder="+94 77 123 4567">
+                </div>
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div class="form-group">
+                        <label>First Name</label>
+                        <input type="text" id="fname">
+                    </div>
+                    <div class="form-group">
+                        <label>Last Name</label>
+                        <input type="text" id="lname">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Address</label>
+                    <input type="text" id="address" placeholder="Street address">
+                </div>
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div class="form-group">
+                        <label>Postal Code</label>
+                        <input type="text" id="zip">
+                    </div>
+                    <div class="form-group">
+                        <label>City</label>
+                        <input type="text" id="city">
+                    </div>
+                </div>
+                <button class="btn-primary" onclick="nextStep('payment')">Continue to Payment</button>
+            </div>
+
+            <!-- Step 3: Payment -->
+            <div id="step-payment" class="step-container hidden">
+                <div class="step-header">3. Payment</div>
+                <div class="form-group">
+                    <label>Card Number</label>
+                    <input type="text" placeholder="0000 0000 0000 0000">
+                </div>
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div class="form-group">
+                        <label>Expiry (MM/YY)</label>
+                        <input type="text" placeholder="MM/YY">
+                    </div>
+                    <div class="form-group">
+                        <label>CVC</label>
+                        <input type="text" placeholder="123">
+                    </div>
+                </div>
+                <button class="btn-primary" onclick="nextStep('review')">Review Order</button>
+            </div>
+
+            <!-- Step 4: Review -->
+            <div id="step-review" class="step-container hidden">
+                <div class="step-header">4. Review & Purchase</div>
+                <p>Please review your order details above.</p>
+                <div style="margin-top: 1rem;">
+                    <button class="btn-primary" onclick="placeOrder()">Place Order</button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Order Summary Sidebar -->
+        <div class="order-summary">
+            <div class="step-header">Order Summary</div>
+            <div id="checkout-items">
+                <!-- Injected via JS -->
+            </div>
+            <div class="summary-total">
+                <span>Total</span>
+                <span id="checkout-total">€0.00</span>
+            </div>
+            <div style="margin-top: 1rem; font-size: 0.8rem; text-align: center; color: #888;">
+                <p>Secure SSL Checkout</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Minimal Footer -->
+    <footer>
+        <p>&copy; 2026 Xanthic Easel</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Inline script for checkout specific logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const cart = getCart();
+            const container = document.getElementById('checkout-items');
+            const totalEl = document.getElementById('checkout-total');
+            let total = 0;
+
+            if (cart.length === 0) {
+                container.innerHTML = "<p>Your cart is empty.</p>";
+                return;
+            }
+
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                const div = document.createElement('div');
+                div.className = 'summary-item';
+                div.innerHTML = `
+                    <img src="${item.image}" class="summary-thumb">
+                    <div class="summary-details">
+                        <h4>${item.title}</h4>
+                        <p>${item.frame}, ${item.size}</p>
+                        <p>Qty: ${item.quantity} | LKR ${itemTotal.toLocaleString()}</p>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+            totalEl.innerText = `LKR ${total.toLocaleString()}`;
+        });
+
+        function nextStep(step) {
+            // Hide all steps
+            document.querySelectorAll('.step-container').forEach(el => el.classList.add('hidden'));
+            // Show requested step
+            document.getElementById(`step-${step}`).classList.remove('hidden');
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        function placeOrder() {
+            alert('Thank you for your order! This is a demo checkout.');
+            localStorage.removeItem('xanthic_cart');
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+
+</html>
