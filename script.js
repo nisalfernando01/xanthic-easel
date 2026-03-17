@@ -2,40 +2,32 @@
 const products = [
     {
         id: '001',
-        title: '001. Crabbing',
+        title: '001. Tropical paradise',
         priceBySizes: {
-            '20x30': 25000.00,
-            '30x40': 35000.00
+            '46x61': 8000.00,
+            '61x76': 12000.00
         },
-        image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=1000&auto=format&fit=crop'
+        image: 'images/tree.jpg'
     },
     {
         id: '002',
-        title: '002. Fin & Shadow',
+        title: '002. Colorful spirits',
         priceBySizes: {
-            '20x30': 28500.00,
-            '30x40': 38500.00
+            '46x61': 8000.00,
+            '61x76': 12000.00
         },
-        image: 'https://images.unsplash.com/photo-1531959870249-9f9b729efcf4?q=80&w=1000&auto=format&fit=crop'
+        image: 'images/kala2.jpg'
     },
     {
         id: '003',
-        title: '003. August in Cantabria',
+        title: '003. Hustle ride',
         priceBySizes: {
-            '20x30': 22000.00,
-            '30x40': 32000.00
+            '46x61': 8000.00,
+            '61x76': 12000.00
         },
-        image: 'https://images.unsplash.com/photo-1473116763249-56381a34c256?q=80&w=1000&auto=format&fit=crop'
+        image: 'images/kala4.jpg'
     },
-    {
-        id: '004',
-        title: '004. Rack',
-        priceBySizes: {
-            '20x30': 30000.00,
-            '30x40': 40000.00
-        },
-        image: 'https://images.unsplash.com/photo-1502082553048-f009c37129b9?q=80&w=1000&auto=format&fit=crop'
-    }
+    
 ];
 
 // --- Page Logic ---
